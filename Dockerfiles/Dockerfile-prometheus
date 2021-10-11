@@ -1,0 +1,10 @@
+FROM centos:7
+
+RUN yum install -y wget \
+    wget https://github.com/prometheus/prometheus/releases/download/v2.30.3/prometheus-2.30.3.linux-amd64.tar.gz \
+    tar -xvzf /prometheus-2.30.3.linux-amd64.tar.gz \
+    yum clean all
+
+EXPOSE 9090
+
+CMD prometheus-2.30.3.linux-amd64/./prometheus  --config.file=prometheus-2.30.3.linux-amd64/prometheus.yml

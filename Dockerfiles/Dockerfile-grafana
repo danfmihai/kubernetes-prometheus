@@ -1,0 +1,9 @@
+FROM centos:7
+
+RUN yum install -y wget \
+    wget https://dl.grafana.com/oss/release/grafana-8.2.1-1.x86_64.rpm \
+    yum install -y grafana-8.2.1-1.x86_64.rpm \
+    yum clean all
+
+CMD /usr/sbin/grafana-server --pidfile=/var/run/grafana-server.pid --config=/etc/grafana/grafana.ini --homepath=/usr/share/grafana cfg:default.paths.data=/var/lib/grafana cfg:default.paths.logs=/var/log/grafana cfg:default.paths.plugins=/var/lib/grafana/plugins
+
